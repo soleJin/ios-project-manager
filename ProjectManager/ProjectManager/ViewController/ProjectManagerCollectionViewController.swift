@@ -22,6 +22,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         
         view.addSubview(collectionView)
         configureAutoLayout()
+        configureNavigationBar()
     }
     
     private func configureAutoLayout() {
@@ -31,6 +32,15 @@ class ProjectManagerCollectionViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func configureNavigationBar() {
+        self.title = "Project Manager"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(didTapPlusButton))
+    }
+    
+    @objc private func didTapPlusButton() {
+        
     }
 }
 
