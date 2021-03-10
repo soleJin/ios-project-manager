@@ -32,6 +32,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        view.backgroundColor = .white
         view.addSubview(collectionView)
     }
     
@@ -44,8 +45,8 @@ class ProjectManagerCollectionViewController: UIViewController {
         ])
     }
     
-    func configureNavigationBar() {
-
+    private func configureNavigationBar() {
+        navigationItem.title = "Project Manager"
     }
 }
 
