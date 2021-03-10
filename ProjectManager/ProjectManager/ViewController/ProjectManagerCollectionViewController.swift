@@ -26,6 +26,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         setUpCollectionView()
         configureAutoLayout()
         configureNavigationBar()
+        configureToolBar()
     }
     
     private func setUpCollectionView() {
@@ -47,6 +48,10 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     private func configureNavigationBar() {
         navigationItem.title = "Project Manager"
+    }
+    
+    private func configureToolBar() {
+        navigationController?.isToolbarHidden = false
     }
 }
 
