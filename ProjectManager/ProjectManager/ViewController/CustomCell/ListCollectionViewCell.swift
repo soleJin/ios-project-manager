@@ -6,3 +6,14 @@
 //
 
 import UIKit
+
+class ListCollectionViewCell: UICollectionViewCell {
+    static let identifier = "ListCollectionViewCell"
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .lightGray
+        return tableView
+    }()
+}
