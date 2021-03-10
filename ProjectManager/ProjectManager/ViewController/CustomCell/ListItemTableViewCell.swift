@@ -80,4 +80,10 @@ class ListItemTableViewCell: UITableViewCell {
         descriptionLabel.text = nil
         deadLineLabel.text = nil
     }
+    
+    func fillLabelsText(todo: Todo) {
+        titleLabel.text = todo.title
+        descriptionLabel.text = todo.description
+        deadLineLabel.text = todo.deadLine?.toString
+    }
 }
