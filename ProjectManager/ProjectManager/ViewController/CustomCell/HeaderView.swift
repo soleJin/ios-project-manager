@@ -29,4 +29,19 @@ class HeaderView: UIView {
         cellCountLabel.layer.cornerRadius = 15
         return cellCountLabel
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureSubview()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func configureSubview() {
+        addSubview(containerView)
+        containerView.addSubview(headerTitleLabel)
+        containerView.addSubview(listCountLabel)
+    }
 }
