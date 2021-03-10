@@ -74,4 +74,10 @@ class ListItemTableViewCell: UITableViewCell {
             deadLineLabel.heightAnchor.constraint(equalTo: deadLineLabel.heightAnchor)
         ])
     }
+    
+    override func prepareForReuse() {
+        titleLabel.text = nil
+        descriptionLabel.text = nil
+        deadLineLabel.text = nil
+    }
 }
