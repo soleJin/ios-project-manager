@@ -19,19 +19,26 @@ class ProjectManagerCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
-        configureAutoLayout()
+
+        configureSubView()
         configureNavigationBar()
         configureToolBar()
+        configureAutoLayout()
     }
     
     private func configureAutoLayout() {
+        let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
+    }
+    
+    private func configureSubView() {
+        view.addSubview(collectionView)
+        collectionView.delegate = self
     }
     
     private func configureNavigationBar() {
@@ -60,5 +67,16 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     @objc private func didTapRedoButton() {
         
+    }
+}
+
+extension ProjectManagerCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellSpacing: CGFloat = 10
+
+        let width = (collectionView.bounds.width - cellSpacing * 2 ) / 3
+        let height = collectionView.bounds.height
+
+        return CGSize(width: width, height: height)
     }
 }
