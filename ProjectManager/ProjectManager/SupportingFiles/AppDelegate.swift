@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // empty
         } else {
             window = UIWindow()
+            window?.backgroundColor = .systemGray5
             let rootViewController = ProjectManagerCollectionViewController()
             let navigationController = UINavigationController(rootViewController: rootViewController)
             window?.rootViewController = navigationController

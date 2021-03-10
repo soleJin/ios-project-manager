@@ -15,27 +15,33 @@ class ListCollectionViewCell: UICollectionViewCell {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .lightGray
+        tableView.isScrollEnabled = false
+        tableView.backgroundColor = .systemGray6
+        tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: ListItemTableViewCell.identifier)
         return tableView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(tableView)
-        tableView.dataSource = self
+        configureSubview()
+        configureAutoLayout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    private func configureSubview() {
+        contentView.addSubview(tableView)
+        tableView.dataSource = self
+    }
+    
     private func configureAutoLayout() {
-        let margin: CGFloat = 10
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
-            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
-            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
-            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin)
+            tableView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }
@@ -49,6 +55,11 @@ extension ListCollectionViewCell: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListItemTableViewCell.identifier, for: indexPath) as? ListItemTableViewCell else {
             return UITableViewCell()
         }
+        guard let todo = list[indexPath.row] else {
+            return UITableViewCell()
+        }
+        cell.fillLabelsText(todo: todo)
+        cell.backgroundColor = .systemPink
         return cell
     }
 }

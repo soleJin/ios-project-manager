@@ -31,7 +31,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = false
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .systemGray5
         collectionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.identifier)
         return collectionView
     }()
@@ -107,7 +107,7 @@ extension ProjectManagerCollectionViewController: UICollectionViewDataSource {
 extension ProjectManagerCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSpacing: CGFloat = 10
-
+        
         let width = (collectionView.bounds.width - cellSpacing * 2 ) / 3
         let height = collectionView.bounds.height
 
