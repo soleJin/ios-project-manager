@@ -15,7 +15,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         flowLayout.scrollDirection = .horizontal
         collectionView.isScrollEnabled = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .systemGray6
+        collectionView.backgroundColor = .lightGray
         collectionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: "ListCollectionViewCell")
         return collectionView
     }()

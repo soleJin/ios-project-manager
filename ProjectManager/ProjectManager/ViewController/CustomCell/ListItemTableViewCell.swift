@@ -10,9 +10,9 @@ import UIKit
 
 class ListItemTableViewCell: UITableViewCell {
     let contentsContainerView = UIView()
-    lazy var titleLable: UILabel = makeCellLabel(font: .title1, textColor: .black)
+    lazy var titleLable: UILabel = makeCellLabel(font: .title3, textColor: .black)
     lazy var descriptionLable: UILabel = makeCellLabel(font: .body, textColor: .gray, numberOfLines: 3)
-    lazy var deadLineLabel: UILabel = makeCellLabel(font: .body, textColor: .black)
+    lazy var deadLineLabel: UILabel = makeCellLabel(font: .callout, textColor: .black)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -47,23 +47,22 @@ class ListItemTableViewCell: UITableViewCell {
     private func configureAutoLayout() {
         NSLayoutConstraint.activate([
             contentsContainerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//            contentsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             contentsContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             contentsContainerView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1),
-            contentsContainerView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1),
+            contentsContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             
-            titleLable.leadingAnchor.constraint(equalTo: contentsContainerView.leadingAnchor),
-            titleLable.trailingAnchor.constraint(equalTo: contentsContainerView.trailingAnchor),
             titleLable.topAnchor.constraint(equalTo: contentsContainerView.topAnchor, constant: 10),
+            titleLable.centerXAnchor.constraint(equalTo: contentsContainerView.centerXAnchor),
+            titleLable.widthAnchor.constraint(equalTo: contentsContainerView.widthAnchor, multiplier: 0.9),
             
             descriptionLable.topAnchor.constraint(equalTo: titleLable.bottomAnchor),
-            descriptionLable.leadingAnchor.constraint(equalTo: contentsContainerView.leadingAnchor),
-            descriptionLable.trailingAnchor.constraint(equalTo: contentsContainerView.trailingAnchor),
+            descriptionLable.centerXAnchor.constraint(equalTo: contentsContainerView.centerXAnchor),
+            descriptionLable.widthAnchor.constraint(equalTo: contentsContainerView.widthAnchor, multiplier: 0.9),
             
             deadLineLabel.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 10),
             deadLineLabel.bottomAnchor.constraint(equalTo: contentsContainerView.bottomAnchor, constant: -10),
-            deadLineLabel.leadingAnchor.constraint(equalTo: contentsContainerView.leadingAnchor),
-            deadLineLabel.trailingAnchor.constraint(equalTo: contentsContainerView.trailingAnchor)
+            deadLineLabel.centerXAnchor.constraint(equalTo: contentsContainerView.centerXAnchor),
+            deadLineLabel.widthAnchor.constraint(equalTo: contentsContainerView.widthAnchor, multiplier: 0.9)
         ])
     }
     
@@ -74,7 +73,7 @@ class ListItemTableViewCell: UITableViewCell {
     func fillLabelsText(item: Todo) {
         titleLable.text = item.title
         descriptionLable.text = item.description
-        deadLineLabel.text = "No Data"
+        deadLineLabel.text = "2021. 03. 01"
     }
     
 //    private func checkIsOverdue(date: Date) -> Bool {

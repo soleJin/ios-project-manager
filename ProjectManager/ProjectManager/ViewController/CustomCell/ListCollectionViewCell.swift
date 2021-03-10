@@ -47,17 +47,17 @@ class ListCollectionViewCell: UICollectionViewCell {
 extension ListCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return itemList.count
-        return 5
+        return 2
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell") as? ListItemTableViewCell else {
             return UITableViewCell()
         }
         
         // 임시 데이터
-        let todo = Todo(title: "Hello", description: "Odong", deadLine: Date())
-        let todo2 = Todo(title: "Odongodngodngodngodng", description: "NamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamuNamu", deadLine: Date())
+        let todo = Todo(title: "찌로랑 코딩하기", description: "이불 속에 들어가고 싶다", deadLine: Date())
+        let todo2 = Todo(title: "Sole과 UI 만들기", description: "UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.UI를 만들자.", deadLine: Date())
         
         if indexPath.row % 2 == 0 {
             cell.fillLabelsText(item: todo)
