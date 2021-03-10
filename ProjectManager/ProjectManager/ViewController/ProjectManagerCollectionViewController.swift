@@ -100,6 +100,13 @@ extension ProjectManagerCollectionViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.list = self.testList[indexPath.item]
+        if indexPath.item == 0 {
+            cell.ownName = List.todo
+        } else if indexPath.item == 1 {
+            cell.ownName = List.doing
+        } else if indexPath.item == 2 {
+            cell.ownName = List.done
+        }
         return cell
     }
 }

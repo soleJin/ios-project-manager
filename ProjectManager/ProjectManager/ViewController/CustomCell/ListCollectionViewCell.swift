@@ -9,7 +9,7 @@ import UIKit
 
 class ListCollectionViewCell: UICollectionViewCell {
     static let identifier = "ListCollectionViewCell"
-    
+    var ownName: String?
     var list: [Todo?] = []
     
     private let tableView: UITableView = {
@@ -61,7 +61,6 @@ extension ListCollectionViewCell: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.fillLabelsText(todo: todo)
-        cell.backgroundColor = .systemPink
         return cell
     }
 }
@@ -77,5 +76,17 @@ extension ListCollectionViewCell: UITableViewDelegate {
         layer.backgroundColor = UIColor.systemPink.cgColor
         layer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: bottomPadding)
         cell.layer.mask = layer
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        headerView.backgroundColor = .systemGray5
+        headerView.titleLabel.text = ownName
+        headerView.listCountLabel.text = String(list.count)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }

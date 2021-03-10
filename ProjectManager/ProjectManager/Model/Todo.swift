@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum List {
+    static let todo: String = "TODO"
+    static let doing: String = "DOING"
+    static let done: String = "DONE"
+}
+
 struct Todo {
     var title: String
     var description: String?

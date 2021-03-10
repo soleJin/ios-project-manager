@@ -11,22 +11,22 @@ class HeaderView: UIView {
     
     private let containerView = UIView()
 
-    private let headerTitleLabel: UILabel = {
+    var titleLabel: UILabel = {
         let headerTitleLabel = UILabel()
         headerTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        headerTitleLabel.font = UIFont.boldSystemFont(ofSize: 35)
+        headerTitleLabel.font = UIFont.boldSystemFont(ofSize: 30)
         return headerTitleLabel
     }()
     
-    private let listCountLabel: UILabel = {
+    var listCountLabel: UILabel = {
         let cellCountLabel = UILabel()
         cellCountLabel.translatesAutoresizingMaskIntoConstraints = false
         cellCountLabel.backgroundColor = .black
         cellCountLabel.textColor = .white
         cellCountLabel.textAlignment = .center
-        cellCountLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        cellCountLabel.font = UIFont.boldSystemFont(ofSize: 17)
         cellCountLabel.layer.masksToBounds = true
-        cellCountLabel.layer.cornerRadius = 15
+        cellCountLabel.layer.cornerRadius = 13
         return cellCountLabel
     }()
     
@@ -42,7 +42,7 @@ class HeaderView: UIView {
     
     private func configureSubviews() {
         addSubview(containerView)
-        containerView.addSubview(headerTitleLabel)
+        containerView.addSubview(titleLabel)
         containerView.addSubview(listCountLabel)
     }
     
@@ -53,14 +53,14 @@ class HeaderView: UIView {
             centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             heightAnchor.constraint(equalTo: containerView.heightAnchor),
             
-            headerTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
-            headerTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            headerTitleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
 
             listCountLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            listCountLabel.leadingAnchor.constraint(equalTo: headerTitleLabel.trailingAnchor, constant: 15),
-            listCountLabel.widthAnchor.constraint(equalToConstant: 30),
-            listCountLabel.heightAnchor.constraint(equalToConstant: 30)
+            listCountLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10),
+            listCountLabel.widthAnchor.constraint(equalToConstant: 26),
+            listCountLabel.heightAnchor.constraint(equalToConstant: 26)
         ])
     }
 }
