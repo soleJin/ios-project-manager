@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+extension Date {
+    var toString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = .autoupdatingCurrent
+        dateFormatter.dateFormat = "yyyy. M. d."
+        return dateFormatter.string(from: self)
+    }
+}
