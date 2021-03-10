@@ -32,16 +32,35 @@ class HeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureSubview()
+        configureSubviews()
+        configureAutoLayout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    private func configureSubview() {
+    private func configureSubviews() {
         addSubview(containerView)
         containerView.addSubview(headerTitleLabel)
         containerView.addSubview(listCountLabel)
+    }
+    
+    private func configureAutoLayout() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalTo: containerView.widthAnchor),
+            centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            heightAnchor.constraint(equalTo: containerView.heightAnchor),
+            
+            headerTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            headerTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            headerTitleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+
+            listCountLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            listCountLabel.leadingAnchor.constraint(equalTo: headerTitleLabel.trailingAnchor, constant: 15),
+            listCountLabel.widthAnchor.constraint(equalToConstant: 30),
+            listCountLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
     }
 }
