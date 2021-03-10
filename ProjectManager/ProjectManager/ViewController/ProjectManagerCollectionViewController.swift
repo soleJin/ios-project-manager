@@ -7,10 +7,17 @@
 import UIKit
 
 class ProjectManagerCollectionViewController: UIViewController {
+    
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = false
+        return collectionView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 }
 
