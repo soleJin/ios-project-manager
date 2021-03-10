@@ -17,6 +17,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = false
         tableView.backgroundColor = .systemGray6
+        tableView.separatorStyle = .none
         tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: ListItemTableViewCell.identifier)
         return tableView
     }()
@@ -34,6 +35,7 @@ class ListCollectionViewCell: UICollectionViewCell {
     private func configureSubview() {
         contentView.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func configureAutoLayout() {
@@ -61,5 +63,19 @@ extension ListCollectionViewCell: UITableViewDataSource {
         cell.fillLabelsText(todo: todo)
         cell.backgroundColor = .systemPink
         return cell
+    }
+}
+
+extension ListCollectionViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let bottomPadding: CGFloat = 5
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.systemPink.cgColor
+        layer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: bottomPadding)
+        cell.layer.mask = layer
     }
 }
