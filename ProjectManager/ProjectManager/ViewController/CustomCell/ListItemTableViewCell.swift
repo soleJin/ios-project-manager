@@ -44,4 +44,21 @@ class ListItemTableViewCell: UITableViewCell {
         deadLineLabel.font = UIFont.systemFont(ofSize: 17)
         return deadLineLabel
     }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = .blue
+        configureSubViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func configureSubViews() {
+        contentView.addSubview(contentsContainerView)
+        contentsContainerView.addSubview(titleLabel)
+        contentsContainerView.addSubview(descriptionLabel)
+        contentsContainerView.addSubview(deadLineLabel)
+    }
 }
