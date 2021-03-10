@@ -10,15 +10,15 @@ import UIKit
 class ListItemTableViewCell: UITableViewCell {
     static let identifier = "ListItemTableViewCell"
     
-    private let contentsContainerView: UIStackView = {
+    private let contentsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.backgroundColor = .white
         stackView.axis = .vertical
-        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         stackView.distribution = .equalSpacing
         stackView.spacing = 5
         stackView.alignment = .leading
+        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         return stackView
     }()
     
@@ -49,6 +49,7 @@ class ListItemTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .blue
         configureSubViews()
+        configureAutoLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -56,9 +57,21 @@ class ListItemTableViewCell: UITableViewCell {
     }
     
     private func configureSubViews() {
-        contentView.addSubview(contentsContainerView)
-        contentsContainerView.addSubview(titleLabel)
-        contentsContainerView.addSubview(descriptionLabel)
-        contentsContainerView.addSubview(deadLineLabel)
+        contentView.addSubview(contentsStackView)
+        contentsStackView.addSubview(titleLabel)
+        contentsStackView.addSubview(descriptionLabel)
+        contentsStackView.addSubview(deadLineLabel)
+    }
+    
+    private func configureAutoLayout() {
+        NSLayoutConstraint.activate([
+            contentsStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            contentsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            contentsStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            contentsStackView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            
+            titleLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor),
+            deadLineLabel.heightAnchor.constraint(equalTo: deadLineLabel.heightAnchor)
+        ])
     }
 }
