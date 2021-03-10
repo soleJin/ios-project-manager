@@ -22,6 +22,7 @@ class ListCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(tableView)
+        tableView.dataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -36,5 +37,18 @@ class ListCollectionViewCell: UICollectionViewCell {
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
             tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin)
         ])
+    }
+}
+
+extension ListCollectionViewCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListItemTableViewCell.identifier, for: indexPath) as? ListItemTableViewCell else {
+            return UITableViewCell()
+        }
+        return cell
     }
 }
