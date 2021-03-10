@@ -8,6 +8,24 @@ import UIKit
 
 class ProjectManagerCollectionViewController: UIViewController {
     
+    var todoTestList: [Todo] = [
+        Todo(title: "todo1", description: "내용1", deadLine: nil),
+        Todo(title: "todo2", description: "내용2", deadLine: nil)
+    ]
+    var doingTestList: [Todo] = [
+        Todo(title: "doing1", description: "내용1", deadLine: nil),
+        Todo(title: "doing2", description: "내용2", deadLine: Date()),
+        Todo(title: "doing3", description: "내용3", deadLine: Date()),
+        Todo(title: "doing4", description: "내용4", deadLine: nil)
+    ]
+    var doneTestList: [Todo] = [
+        Todo(title: "done1", description: "내용1", deadLine: Date()),
+        Todo(title: "done2", description: "내용2", deadLine: nil),
+        Todo(title: "done3", description: "내용3", deadLine: nil)
+    ]
+    
+    lazy var testList: [[Todo]] = [todoTestList, doingTestList, doneTestList]
+    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -74,17 +92,16 @@ class ProjectManagerCollectionViewController: UIViewController {
 
 extension ProjectManagerCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return testList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.list = self.testList[indexPath.item]
         return cell
     }
-    
-    
 }
 
 extension ProjectManagerCollectionViewController: UICollectionViewDelegateFlowLayout {

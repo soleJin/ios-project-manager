@@ -10,6 +10,8 @@ import UIKit
 class ListCollectionViewCell: UICollectionViewCell {
     static let identifier = "ListCollectionViewCell"
     
+    var list: [Todo?] = []
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
