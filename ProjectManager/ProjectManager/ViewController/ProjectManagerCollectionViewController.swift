@@ -19,10 +19,10 @@ class ProjectManagerCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(collectionView)
         configureAutoLayout()
         configureNavigationBar()
+        configureToolBar()
     }
     
     private func configureAutoLayout() {
@@ -42,5 +42,23 @@ class ProjectManagerCollectionViewController: UIViewController {
     @objc private func didTapPlusButton() {
         
     }
+    
+    private func configureToolBar() {
+        self.navigationController?.isToolbarHidden = false
+        let flexibleSapceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let undoButton = UIBarButtonItem(barButtonSystemItem: .undo, target: nil, action: #selector(didTapUndoButton))
+        undoButton.isEnabled = false
+        let redoButton = UIBarButtonItem(barButtonSystemItem: .redo, target: nil, action: #selector(didTapRedoButton))
+        redoButton.isEnabled = false
+        let barButtonItems = [flexibleSapceButton, undoButton, redoButton]
+        toolbarItems = barButtonItems
+    }
+    
+    @objc private func didTapUndoButton() {
+        
+    }
+    
+    @objc private func didTapRedoButton() {
+        
+    }
 }
-
