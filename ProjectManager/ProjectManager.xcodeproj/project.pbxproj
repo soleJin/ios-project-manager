@@ -17,6 +17,7 @@
 		FD4D230825F7134000FA6E6A /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D230725F7134000FA6E6A /* ListCollectionViewCell.swift */; };
 		FD4D230C25F7134F00FA6E6A /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D230B25F7134F00FA6E6A /* ListItemTableViewCell.swift */; };
 		FD4D231025F7138800FA6E6A /* Date+ConverToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D230F25F7138800FA6E6A /* Date+ConverToString.swift */; };
+		FD58E71A25F9377C00AD0B33 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58E71925F9377C00AD0B33 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FD4D230725F7134000FA6E6A /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD4D230B25F7134F00FA6E6A /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
 		FD4D230F25F7138800FA6E6A /* Date+ConverToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ConverToString.swift"; sourceTree = "<group>"; };
+		FD58E71925F9377C00AD0B33 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				FD4D230725F7134000FA6E6A /* ListCollectionViewCell.swift */,
+				FD58E71925F9377C00AD0B33 /* HeaderView.swift */,
 				FD4D230B25F7134F00FA6E6A /* ListItemTableViewCell.swift */,
 			);
 			path = CustomCell;
@@ -190,6 +193,7 @@
 			files = (
 				FD4D230C25F7134F00FA6E6A /* ListItemTableViewCell.swift in Sources */,
 				FD4D230825F7134000FA6E6A /* ListCollectionViewCell.swift in Sources */,
+				FD58E71A25F9377C00AD0B33 /* HeaderView.swift in Sources */,
 				C7431F0A25F51E1D0094C4CF /* ProjectManagerCollectionViewController.swift in Sources */,
 				C7431F0625F51E1D0094C4CF /* AppDelegate.swift in Sources */,
 				FD4D231025F7138800FA6E6A /* Date+ConverToString.swift in Sources */,
