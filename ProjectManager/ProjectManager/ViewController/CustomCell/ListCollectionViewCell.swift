@@ -28,6 +28,9 @@ class ListCollectionViewCell: UICollectionViewCell {
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
+        tableView.separatorStyle = .singleLine
+        tableView.backgroundColor = .systemGray6
+        tableView.tableFooterView = UIView()
         contentView.addSubview(tableView)
     }
     
@@ -63,6 +66,8 @@ extension ListCollectionViewCell: UITableViewDataSource {
         }
 //        cell.fillLabelsText(item: todo)
 //        cell.fillLabelsText(item: itemList[indexPath.row])
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        cell.contentView.backgroundColor = .systemGray6
         return cell
     }
 }
