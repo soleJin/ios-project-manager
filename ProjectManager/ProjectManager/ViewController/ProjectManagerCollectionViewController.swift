@@ -14,6 +14,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .lightGray
+        collectionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.identifier)
         return collectionView
     }()
 
@@ -39,6 +40,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     private func configureSubView() {
         view.addSubview(collectionView)
         collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     private func configureNavigationBar() {
@@ -68,6 +70,21 @@ class ProjectManagerCollectionViewController: UIViewController {
     @objc private func didTapRedoButton() {
         
     }
+}
+
+extension ProjectManagerCollectionViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        return cell
+    }
+    
+    
 }
 
 extension ProjectManagerCollectionViewController: UICollectionViewDelegateFlowLayout {
