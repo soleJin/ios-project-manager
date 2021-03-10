@@ -15,12 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         if #available(iOS 13.0, *) {
                     // empty
-                } else {
-                    window = UIWindow()
-                    let rootViewController = ProjectManagerCollectionViewController()
-                    window?.rootViewController = rootViewController
-                    window?.makeKeyAndVisible()
-                }
+        } else {
+            window = UIWindow()
+            let rootViewController = ProjectManagerCollectionViewController()
+            let navigationViewController = UINavigationController(rootViewController: rootViewController)
+            window?.rootViewController = navigationViewController
+            window?.makeKeyAndVisible()
+        }
         return true
     }
 
