@@ -67,7 +67,10 @@ class ProjectManagerCollectionViewController: UIViewController {
     }
     
     @objc private func didTapPlusButton() {
-        
+        self.modalPresentationStyle = .formSheet
+        let modalView = ListItemDetailViewController()
+        modalView.view.backgroundColor = .white
+        self.present(modalView, animated: true, completion: nil)
     }
     
     private func configureToolBar() {

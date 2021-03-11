@@ -30,6 +30,12 @@ class HeaderView: UIView {
         return cellCountLabel
     }()
     
+    private let separatorView: UIView = {
+        let seperatorVIew = UIView()
+        
+        return seperatorVIew
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
