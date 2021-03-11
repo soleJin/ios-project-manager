@@ -17,6 +17,7 @@ class ListCollectionViewCell: UICollectionViewCell {
 
         configureTableView()
         configureAutoLayout()
+        configureTableViewHeaderFooterView()
     }
 
     required init?(coder: NSCoder) {
@@ -30,7 +31,6 @@ class ListCollectionViewCell: UICollectionViewCell {
         tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = .systemGray6
-        tableView.tableFooterView = UIView()
         contentView.addSubview(tableView)
     }
     
@@ -41,6 +41,12 @@ class ListCollectionViewCell: UICollectionViewCell {
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+    }
+    
+    private func configureTableViewHeaderFooterView() {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 200))
+        tableView.tableFooterView = UIView()
+        tableView.tableHeaderView = headerView
     }
 }
 

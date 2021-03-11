@@ -52,6 +52,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     private func configureToolBar() {
         navigationController?.isToolbarHidden = false
+        
     }
 }
 
