@@ -23,7 +23,7 @@ class ListItemDetailViewController: UIViewController {
     private let titleTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.boldSystemFont(ofSize: 19)
+        textField.font = UIFont.boldSystemFont(ofSize: 21)
         textField.placeholder = "Title"
         textField.borderStyle = .roundedRect
         //To apply Shadow
@@ -67,7 +67,6 @@ class ListItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
-        configureAutoLayout()
     }
     
     private func configureSubviews() {
@@ -75,9 +74,5 @@ class ListItemDetailViewController: UIViewController {
         stackView.addSubview(titleTextField)
         stackView.addSubview(datePicker)
         stackView.addSubview(descriptionTextView)
-    }
-    
-    private func configureAutoLayout() {
-        
     }
 }
