@@ -18,7 +18,6 @@ class ListItemTableViewCell: UITableViewCell {
         stackView.distribution = .equalSpacing
         stackView.spacing = 5
         stackView.alignment = .leading
-        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         return stackView
     }()
     

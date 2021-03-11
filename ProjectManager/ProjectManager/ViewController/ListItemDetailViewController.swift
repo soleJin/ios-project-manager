@@ -19,7 +19,7 @@ class ListItemDetailViewController: UIViewController {
         return stackView
     }()
     
-    private let titleTextField: UITextField = {
+    var titleTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.boldSystemFont(ofSize: 21)
@@ -50,7 +50,7 @@ class ListItemDetailViewController: UIViewController {
         return button
     }()
     
-    private let descriptionTextView: UITextView = {
+    var descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: 17)

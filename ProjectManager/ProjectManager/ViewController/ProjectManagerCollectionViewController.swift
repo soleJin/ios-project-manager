@@ -70,7 +70,6 @@ class ProjectManagerCollectionViewController: UIViewController {
         let listItemDetailViewController = ListItemDetailViewController()
         listItemDetailViewController.view.backgroundColor = .white
         let navigationController = UINavigationController(rootViewController: listItemDetailViewController)
-        navigationController.modalPresentationStyle = .formSheet
         present(navigationController, animated: true, completion: nil)
     }
     
@@ -103,13 +102,14 @@ extension ProjectManagerCollectionViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.cellDelegate = self
         cell.list = self.testList[indexPath.item]
         if indexPath.item == 0 {
-            cell.ownName = List.todo
+            cell.ownName = Status.todo
         } else if indexPath.item == 1 {
-            cell.ownName = List.doing
+            cell.ownName = Status.doing
         } else if indexPath.item == 2 {
-            cell.ownName = List.done
+            cell.ownName = Status.done
         }
         return cell
     }
@@ -123,5 +123,14 @@ extension ProjectManagerCollectionViewController: UICollectionViewDelegateFlowLa
         let height = collectionView.bounds.height
 
         return CGSize(width: width, height: height)
+    }
+}
+
+extension ProjectManagerCollectionViewController: ShowEditView {
+    func showEditView(todo: Todo?) {
+        let listItemDetailViewController = ListItemDetailViewController()
+        listItemDetailViewController.view.backgroundColor = .white
+        let navigationController = UINavigationController(rootViewController: listItemDetailViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }

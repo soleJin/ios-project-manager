@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol ShowEditView: AnyObject {
+    func showEditView(todo: Todo?)
+}
+
 class ListCollectionViewCell: UICollectionViewCell {
     static let identifier = "ListCollectionViewCell"
     var ownName: String?
     var list: [Todo?] = []
+    
+    weak var cellDelegate: ShowEditView?
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -52,7 +58,7 @@ extension ListCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListItemTableViewCell.identifier, for: indexPath) as? ListItemTableViewCell else {
             return UITableViewCell()
@@ -63,7 +69,7 @@ extension ListCollectionViewCell: UITableViewDataSource {
         cell.fillLabelsText(todo: todo)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             list.remove(at: indexPath.row)
@@ -75,6 +81,8 @@ extension ListCollectionViewCell: UITableViewDataSource {
 extension ListCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let todo = list[indexPath.row] else { return }
+        cellDelegate?.showEditView(todo: todo)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

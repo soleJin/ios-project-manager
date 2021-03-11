@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum List {
+enum Status {
     static let todo: String = "TODO"
     static let doing: String = "DOING"
     static let done: String = "DONE"
@@ -18,3 +18,4 @@ struct Todo {
     var description: String?
     var deadLine: Date?
 }
+
