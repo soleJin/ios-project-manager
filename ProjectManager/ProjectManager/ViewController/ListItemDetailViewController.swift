@@ -9,6 +9,17 @@ import UIKit
 
 class ListItemDetailViewController: UIViewController {
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 30
+        stackView.alignment = .leading
+        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        return stackView
+    }()
+    
     private let titleTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -20,10 +31,6 @@ class ListItemDetailViewController: UIViewController {
         textField.layer.shadowColor = UIColor.systemGray5.cgColor
         textField.layer.shadowOffset = .zero
         textField.layer.shadowRadius = 3.0
-        //To apply padding
-        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: textField.frame.height))
-        textField.leftView = paddingView
-        textField.leftViewMode = .always
         return textField
     }()
     
@@ -36,12 +43,25 @@ class ListItemDetailViewController: UIViewController {
         return datePicker
     }()
     
-    private let descriptionTextField: UITextView = {
-        let textField = UITextView()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.systemFont(ofSize: 17)
-        textField.dataDetectorTypes = .all
-        return textField
+    private let button: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.imageView?.image = UIImage(systemName: "checkmark.rectangle.portrait.fill")
+        button.setTitle("날짜선택하지않음", for: .normal)
+        return button
+    }()
+    
+    private let descriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont.systemFont(ofSize: 17)
+        textView.dataDetectorTypes = .all
+        //To apply Shadow
+        textView.layer.shadowOpacity = 1
+        textView.layer.shadowColor = UIColor.systemGray5.cgColor
+        textView.layer.shadowOffset = .zero
+        textView.layer.shadowRadius = 3.0
+        return textView
     }()
     
     override func viewDidLoad() {
@@ -51,9 +71,10 @@ class ListItemDetailViewController: UIViewController {
     }
     
     private func configureSubviews() {
-        view.addSubview(titleTextField)
-        view.addSubview(datePicker)
-        view.addSubview(descriptionTextView)
+        view.addSubview(stackView)
+        stackView.addSubview(titleTextField)
+        stackView.addSubview(datePicker)
+        stackView.addSubview(descriptionTextView)
     }
     
     private func configureAutoLayout() {
