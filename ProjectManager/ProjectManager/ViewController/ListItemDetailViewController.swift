@@ -46,6 +46,17 @@ class ListItemDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureSubviews()
+        configureAutoLayout()
+    }
+    
+    private func configureSubviews() {
+        view.addSubview(titleTextField)
+        view.addSubview(datePicker)
+        view.addSubview(descriptionTextView)
+    }
+    
+    private func configureAutoLayout() {
+        
     }
 }
