@@ -16,18 +16,42 @@ class ListItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAutoLayout()
-        configureNavigationBar()
-        
-        view.backgroundColor = .green
     }
     
-    private func configureNavigationBar() {
+    func configureNavigationBar(itemStatus: ItemStatus, type: DetailViewType) {
+        let leftBarButton: UIBarButtonItem = {
+            let barButtonItem = UIBarButtonItem()
+            barButtonItem.title = type.lightButtonName
+            barButtonItem.style = .plain
+            barButtonItem.target = self
+            
+            switch type {
+            case .create:
+                barButtonItem.action = #selector(edit)
+            case .edit:
+                barButtonItem.action = #selector(cancel)
+            }
+            return barButtonItem
+        }()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(done))
         
+        navigationItem.title = itemStatus.title
+        navigationItem.leftBarButtonItem = leftBarButton
+        navigationItem.rightBarButtonItem = doneButton
     }
     
     private func configureAutoLayout() {
-        NSLayoutConstraint.activate([
+    }
+    
+    @objc func edit() {
         
-        ])
+    }
+    
+    @objc func cancel() {
+        
+    }
+    
+    @objc func done() {
+        
     }
 }

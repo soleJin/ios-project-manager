@@ -6,6 +6,37 @@
 
 import UIKit
 
+enum ItemStatus {
+    case todo
+    case doing
+    case done
+    
+    var title: String {
+        switch self {
+        case .todo:
+            return "TODO"
+        case .doing:
+            return "DOING"
+        case .done:
+            return "DONE"
+        }
+    }
+}
+
+enum DetailViewType {
+    case create
+    case edit
+    
+    var lightButtonName: String {
+        switch self {
+        case .create:
+            return "Cancel"
+        case .edit:
+            return "Edit"
+        }
+    }
+}
+
 class ProjectManagerCollectionViewController: UIViewController {
     var statusList = ["TODO", "DOING", "DONE"]
     let collectionView: UICollectionView = {
@@ -58,7 +89,9 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     @objc func createNewItem() {
         let enrollViewController = ListItemDetailViewController()
-        present(enrollViewController, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: enrollViewController)
+        enrollViewController.configureNavigationBar(itemStatus: .todo, type: .create)
+        present(navigationController, animated: true, completion: nil)
     }
 }
 
