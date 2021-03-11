@@ -33,7 +33,7 @@ class ListItemTableViewCell: UITableViewCell {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.font = UIFont.systemFont(ofSize: 17)
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.numberOfLines = 3
         descriptionLabel.textColor = .gray
         return descriptionLabel
     }()
@@ -48,7 +48,7 @@ class ListItemTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .blue
-        configureSubViews()
+        configureSubviews()
         configureAutoLayout()
     }
     
@@ -56,7 +56,7 @@ class ListItemTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-    private func configureSubViews() {
+    private func configureSubviews() {
         contentView.addSubview(contentsStackView)
         contentsStackView.addSubview(titleLabel)
         contentsStackView.addSubview(descriptionLabel)

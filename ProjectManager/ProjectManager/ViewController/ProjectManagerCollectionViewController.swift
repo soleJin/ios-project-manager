@@ -39,7 +39,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureSubView()
+        configureSubview()
         configureNavigationBar()
         configureToolBar()
         configureAutoLayout()
@@ -55,7 +55,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         ])
     }
     
-    private func configureSubView() {
+    private func configureSubview() {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
