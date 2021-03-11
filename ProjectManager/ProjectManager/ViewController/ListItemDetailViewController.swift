@@ -67,6 +67,7 @@ class ListItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
+        configureNavigationBar()
     }
     
     private func configureSubviews() {
@@ -74,5 +75,19 @@ class ListItemDetailViewController: UIViewController {
         stackView.addSubview(titleTextField)
         stackView.addSubview(datePicker)
         stackView.addSubview(descriptionTextView)
+    }
+    
+    private func configureNavigationBar() {
+        self.title = "TODO"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(didTapDoneButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: #selector(didTapEditButton))
+    }
+    
+    @objc private func didTapDoneButton() {
+        
+    }
+    
+    @objc private func didTapEditButton() {
+        
     }
 }

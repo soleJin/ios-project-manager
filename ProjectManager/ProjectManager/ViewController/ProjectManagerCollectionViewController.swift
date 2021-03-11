@@ -68,9 +68,9 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     @objc private func didTapPlusButton() {
         let listItemDetailViewController = ListItemDetailViewController()
+        listItemDetailViewController.view.backgroundColor = .white
         let navigationController = UINavigationController(rootViewController: listItemDetailViewController)
         navigationController.modalPresentationStyle = .formSheet
-        listItemDetailViewController.view.backgroundColor = .white
         present(navigationController, animated: true, completion: nil)
     }
     
