@@ -13,10 +13,9 @@ class ListItemDetailViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fill
         stackView.spacing = 30
-        stackView.alignment = .leading
-        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        stackView.alignment = .center
         return stackView
     }()
     
@@ -68,12 +67,14 @@ class ListItemDetailViewController: UIViewController {
         super.viewDidLoad()
         configureSubviews()
         configureNavigationBar()
+        configureAutoLayout()
     }
     
     private func configureSubviews() {
         view.addSubview(stackView)
         stackView.addSubview(titleTextField)
         stackView.addSubview(datePicker)
+        stackView.addSubview(button)
         stackView.addSubview(descriptionTextView)
     }
     
@@ -89,5 +90,23 @@ class ListItemDetailViewController: UIViewController {
     
     @objc private func didTapEditButton() {
         
+    }
+    
+    private func configureAutoLayout() {
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
+            stackView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.95),
+            stackView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.95),
+            
+            titleTextField.heightAnchor.constraint(equalToConstant: 40),
+            titleTextField.widthAnchor.constraint(equalTo: stackView.widthAnchor),
+            
+            button.heightAnchor.constraint(equalToConstant: 15),
+            button.trailingAnchor.constraint(equalTo: datePicker.trailingAnchor),
+            
+            descriptionTextView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
     }
 }
