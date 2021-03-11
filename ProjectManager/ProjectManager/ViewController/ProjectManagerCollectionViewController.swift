@@ -48,11 +48,17 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     private func configureNavigationBar() {
         navigationItem.title = "Project Manager"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(createNewItem))
     }
     
     private func configureToolBar() {
         navigationController?.isToolbarHidden = false
         
+    }
+    
+    @objc func createNewItem() {
+        let enrollViewController = ListItemDetailViewController()
+        present(enrollViewController, animated: true, completion: nil)
     }
 }
 
